@@ -9,9 +9,7 @@ namespace PasswordKeeeper.Controller
         private static View.MainWindow MainW = View.MainWindow.Class;
 
         public AddDelChange()
-        {
-            Data.DB.Initialize();       
-
+        {  
             MainW.AddBtn.Click += (s, e) =>
             {
                 MainW.listbox.Items.Add(MainW.ResourceBox.Text);

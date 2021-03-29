@@ -23,6 +23,7 @@ namespace PasswordKeeeper.View
         public static MainWindow Class;
         public MainWindow()
         {
+            Data.DB.Initialize();
             InitializeComponent();
             Class = this;
             new Controller.ListboxSelectionChanged();
