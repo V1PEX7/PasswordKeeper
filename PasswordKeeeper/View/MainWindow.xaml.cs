@@ -29,7 +29,7 @@ namespace PasswordKeeeper.View
             new Controller.ListboxSelectionChanged();
             new Controller.AddDelChange();
             new ShowHidePassword();
-            new Controller.RandomPassword();
+            new Controller.RandomPasswordAndCopy();
         }
     }
 }

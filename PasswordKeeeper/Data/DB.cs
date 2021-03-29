@@ -51,10 +51,10 @@ namespace PasswordKeeeper.Data
             readcmd.Connection = con;
             readcmd.CommandText = "SELECT * FROM users";
             SQLiteDataReader reader = readcmd.ExecuteReader();
-            LogPassDescList.list.Clear();
+            Data.list.Clear();
             while (reader.Read())
             {
-                LogPassDescList.list.Add(new LoginPassDesc 
+                Data.list.Add(new LoginPassDesc 
                 { 
                     id = Convert.ToInt32(reader["id"]),
                     Resource = reader["resource"].ToString(),

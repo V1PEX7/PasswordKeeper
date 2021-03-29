@@ -5,10 +5,10 @@ using System.Security.Cryptography;
 
 namespace PasswordKeeeper.Controller
 {
-    class RandomPassword
+    class RandomPasswordAndCopy
     {
         private static View.MainWindow MainW = View.MainWindow.Class;
-        public RandomPassword()
+        public RandomPasswordAndCopy()
         {
             MainW.RandomPasswordBtn.Click += (s, e) =>
             {
@@ -19,6 +19,11 @@ namespace PasswordKeeeper.Controller
                 while (length-- > 0)
                     password.Append(charav[random(charav.Length)]);
                 password.ToString().SetPassword();
+            };
+
+            MainW.CopyPasswordBtn.Click += (s, e) =>
+            {
+                System.Windows.Clipboard.SetText(Data.Data.CurrentPassword);
             };
         }
 

@@ -11,8 +11,9 @@ namespace PasswordKeeeper.Data
         public int id { get; set; }
     }
 
-    public static class LogPassDescList
+    public static class Data
     {
         public static List<LoginPassDesc> list = new List<LoginPassDesc>();
+        public static string CurrentPassword { get; set; } = "";
     }
 }

@@ -20,7 +20,8 @@
         <Button x:Name="AddBtn" Content="Добавить" Margin="0,93,364,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="57"/>
         <Button x:Name="ChangeBtn" Content="Изменить" Margin="0,93,301,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="58"/>
         <Button x:Name="DeleteBtn" Content="Удалить" Margin="0,93,248,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="48"/>
-        <Button x:Name="RandomPasswordBtn" Content="Случайный пароль" Margin="0,118,10,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="114"/>
+        <Button x:Name="RandomPasswordBtn" Content="Случайный пароль" Margin="0,168,10,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="114"/>
         <Button x:Name="ShowPassBtn" Content="Показать пароль" Margin="0,93,10,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="114"/>
+        <Button x:Name="CopyPasswordBtn" Content="Копировать пароль" Margin="0,118,10,0" VerticalAlignment="Top" Background="{x:Null}" HorizontalAlignment="Right" Width="114"/>
     </Grid>
 </Window>

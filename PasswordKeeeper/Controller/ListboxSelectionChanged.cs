@@ -12,9 +12,9 @@ namespace PasswordKeeeper.Controller
         public ListboxSelectionChanged()
         {
             Data.DB.GetAllItems();
-            for (int i = 0; i < Data.LogPassDescList.list.Count; i++)
+            for (int i = 0; i < Data.Data.list.Count; i++)
             {
-                MainW.listbox.Items.Add(Data.LogPassDescList.list[i].Resource);
+                MainW.listbox.Items.Add(Data.Data.list[i].Resource);
             }
 
             MainW.listbox.MouseDown += (s, e) =>
@@ -25,15 +25,15 @@ namespace PasswordKeeeper.Controller
             MainW.listbox.SelectionChanged += (s, e) =>
             {
                 Data.DB.GetAllItems();
-                if(MainW.listbox.SelectedIndex == -1 || MainW.listbox.SelectedIndex >= Data.LogPassDescList.list.Count)
+                if(MainW.listbox.SelectedIndex == -1 || MainW.listbox.SelectedIndex >= Data.Data.list.Count)
                 {
                     View.v.ClearAllTextboxes();
                 }
                 else
                 {
-                    MainW.ResourceBox.Text = Data.LogPassDescList.list[MainW.listbox.SelectedIndex].Resource;
-                    MainW.LoginBox.Text = Data.LogPassDescList.list[MainW.listbox.SelectedIndex].Login;
-                    Data.LogPassDescList.list[MainW.listbox.SelectedIndex].Password.SetPassword();
+                    MainW.ResourceBox.Text = Data.Data.list[MainW.listbox.SelectedIndex].Resource;
+                    MainW.LoginBox.Text = Data.Data.list[MainW.listbox.SelectedIndex].Login;
+                    Data.Data.list[MainW.listbox.SelectedIndex].Password.SetPassword();
                 }
             };
         }

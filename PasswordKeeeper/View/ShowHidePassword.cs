@@ -13,12 +13,11 @@ namespace PasswordKeeeper.View
         public ShowHidePassword()
         {
             MainW.PasswordBox.PasswordChar = '\u25CF';
-            string password = "";
             MainW.ShowPassBtn.Click += (s, e) =>
             {
                 if (hidepass)
                 {
-                    MainW.PasswordTxtBox.Text = password;
+                    MainW.PasswordTxtBox.Text = Data.Data.CurrentPassword;
 
                     MainW.PasswordBox.Visibility = System.Windows.Visibility.Hidden;
                     MainW.PasswordTxtBox.Visibility = System.Windows.Visibility.Visible;
@@ -29,7 +28,7 @@ namespace PasswordKeeeper.View
 
                 else
                 {
-                    MainW.PasswordBox.Password = password;
+                    MainW.PasswordBox.Password = Data.Data.CurrentPassword;
 
                     MainW.PasswordBox.Visibility = System.Windows.Visibility.Visible;
                     MainW.PasswordTxtBox.Visibility = System.Windows.Visibility.Hidden;
@@ -42,13 +41,13 @@ namespace PasswordKeeeper.View
             MainW.PasswordBox.PasswordChanged += (s, e) =>
             {
                 if(hidepass)
-                    password = MainW.PasswordBox.Password;
+                    Data.Data.CurrentPassword = MainW.PasswordBox.Password;
             };
 
             MainW.PasswordTxtBox.TextChanged += (s, e) =>
             {
                 if (!hidepass)
-                    password = MainW.PasswordTxtBox.Text;
+                    Data.Data.CurrentPassword = MainW.PasswordTxtBox.Text;
             };
         }
     }

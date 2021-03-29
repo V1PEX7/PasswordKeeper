@@ -21,7 +21,7 @@ namespace PasswordKeeeper.Controller
             {
                 if(MainW.listbox.SelectedIndex != -1)
                 {
-                    Data.DB.DeleteItem(Data.LogPassDescList.list[MainW.listbox.SelectedIndex].id);
+                    Data.DB.DeleteItem(Data.Data.list[MainW.listbox.SelectedIndex].id);
                     MainW.listbox.Items.Remove(MainW.listbox.SelectedItem);
                 }
             };
@@ -30,7 +30,7 @@ namespace PasswordKeeeper.Controller
             {
                 string text = MainW.ResourceBox.Text;
                 int i = MainW.listbox.SelectedIndex;
-                Data.DB.UpdateItem(Data.LogPassDescList.list[i].id,
+                Data.DB.UpdateItem(Data.Data.list[i].id,
                                    MainW.ResourceBox.Text,
                                    MainW.LoginBox.Text,
                                    MainW.PasswordBox.Password);
