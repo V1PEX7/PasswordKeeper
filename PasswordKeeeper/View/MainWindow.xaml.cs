@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace PasswordKeeeper.View
 {
     /// <summary>
@@ -26,6 +25,8 @@ namespace PasswordKeeeper.View
             Data.DB.Initialize();
             InitializeComponent();
             Class = this;
+            PasswordKeeper.Data.Crypt.Fs.WriteKey();
+            PasswordKeeper.Data.Crypt.Fs.ReadKey();
             new Controller.ListboxSelectionChanged();
             new Controller.AddDelChange();
             new ShowHidePassword();

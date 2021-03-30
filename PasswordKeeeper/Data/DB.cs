@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PasswordKeeper.Data;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.IO;
@@ -20,7 +21,7 @@ namespace PasswordKeeeper.Data
                 con.Open();
                 SQLiteCommand cmd = con.CreateCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, resource TEXT, login TEXT, password TEXT)";
+                cmd.CommandText = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, resource BLOB, login BLOB, password BLOB)";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception err)
@@ -37,9 +38,9 @@ namespace PasswordKeeeper.Data
             SQLiteCommand cmd = con.CreateCommand();
             cmd.Connection = con;
             cmd.CommandText = "INSERT INTO users (resource, login, password) VALUES (@res, @login, @pass)";
-            cmd.Parameters.AddWithValue("@res", resource);
-            cmd.Parameters.AddWithValue("@login", login);
-            cmd.Parameters.AddWithValue("@pass", password);
+            cmd.Parameters.AddWithValue("@res", AES_256.ToAes256(resource));
+            cmd.Parameters.AddWithValue("@login", AES_256.ToAes256(login));
+            cmd.Parameters.AddWithValue("@pass", AES_256.ToAes256(password));
             cmd.ExecuteNonQuery();
         }
 
@@ -57,9 +58,9 @@ namespace PasswordKeeeper.Data
                 Data.list.Add(new LoginPassDesc 
                 { 
                     id = Convert.ToInt32(reader["id"]),
-                    Resource = reader["resource"].ToString(),
-                    Login = reader["login"].ToString(),
-                    Password = reader["password"].ToString()
+                    Resource = AES_256.FromAes256((byte[])reader["resource"]),
+                    Login = AES_256.FromAes256((byte[])reader["login"]),
+                    Password = AES_256.FromAes256((byte[])reader["password"])
                 });
             }
         }
@@ -83,9 +84,9 @@ namespace PasswordKeeeper.Data
             cmd.Connection = con;
             cmd.CommandText = "UPDATE users SET resource = @res, login = @login, password = @pass WHERE id = @id";
             cmd.Parameters.AddWithValue("@id", id);
-            cmd.Parameters.AddWithValue("@res", resource);
-            cmd.Parameters.AddWithValue("@login", login);
-            cmd.Parameters.AddWithValue("@pass", password);
+            cmd.Parameters.AddWithValue("@res", AES_256.ToAes256(resource));
+            cmd.Parameters.AddWithValue("@login", AES_256.ToAes256(login));
+            cmd.Parameters.AddWithValue("@pass", AES_256.ToAes256(password));
             cmd.ExecuteNonQuery();
         }
     }

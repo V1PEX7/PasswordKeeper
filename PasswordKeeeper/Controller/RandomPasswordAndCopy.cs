@@ -12,13 +12,7 @@ namespace PasswordKeeeper.Controller
         {
             MainW.RandomPasswordBtn.Click += (s, e) =>
             {
-                const string charav = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
-                StringBuilder password = new StringBuilder();
-                Random rnd = new Random();
-                int length = 16;
-                while (length-- > 0)
-                    password.Append(charav[random(charav.Length)]);
-                password.ToString().SetPassword();
+                GetRandomPassword().SetPassword();
             };
 
             MainW.CopyPasswordBtn.Click += (s, e) =>
@@ -35,6 +29,17 @@ namespace PasswordKeeeper.Controller
             rng.GetBytes(buffer);
             int result = BitConverter.ToInt32(buffer, 0);
             return new Random(result).Next(max);
+        }
+
+        public string GetRandomPassword()
+        {
+            const string charav = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~";
+            StringBuilder password = new StringBuilder();
+            Random rnd = new Random();
+            int length = 16;
+            while (length-- > 0)
+                password.Append(charav[random(charav.Length)]);
+            return password.ToString();
         }
     }
 }

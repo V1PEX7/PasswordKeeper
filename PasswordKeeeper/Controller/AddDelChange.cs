@@ -13,7 +13,7 @@ namespace PasswordKeeeper.Controller
             MainW.AddBtn.Click += (s, e) =>
             {
                 MainW.listbox.Items.Add(MainW.ResourceBox.Text);
-                Data.DB.AddItem(MainW.ResourceBox.Text, MainW.LoginBox.Text, MainW.PasswordBox.Password);
+                Data.DB.AddItem(MainW.ResourceBox.Text, MainW.LoginBox.Text, Data.Data.CurrentPassword);
                 View.v.ClearAllTextboxes();
             };
 
@@ -33,7 +33,7 @@ namespace PasswordKeeeper.Controller
                 Data.DB.UpdateItem(Data.Data.list[i].id,
                                    MainW.ResourceBox.Text,
                                    MainW.LoginBox.Text,
-                                   MainW.PasswordBox.Password);
+                                   Data.Data.CurrentPassword);
                 MainW.listbox.Items.RemoveAt(i);
                 MainW.listbox.Items.Insert(i, text);
                 MainW.listbox.SelectedIndex = i;
