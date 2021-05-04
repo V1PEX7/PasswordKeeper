@@ -1,6 +1,5 @@
 # PasswordKeeper (Старая версия)
-Проект перенесен на GitLab!
-![Перейти на GitLab url="https://gitlab.com/V1PEX7/PasswordKeeper"]
+Проект перенесен на ![gitlab](https://gitlab.com/V1PEX7/PasswordKeeper "GitLab!")!
 
 Программа для хранения паролей в базе данных SQLite
 
